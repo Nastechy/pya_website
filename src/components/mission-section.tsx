@@ -16,10 +16,10 @@ export default function Mission() {
     }, [isInView, controls])
 
     return (
-        <div className="bg-[#F5F5F5] p-4 md:p-16  ">
-            <section id="information" ref={ref} className="bg-white py-6 md:py-16 lg:py-24 rounded-[16px]">
+        <div className="bg-[#F5F5F5] p-2 md:p-16  ">
+            <section id="information" ref={ref} className="bg-white py-10 md:py-16 lg:py-24 rounded-[16px]">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 grid-flow-row  gap-12 lg:gap-16 items-center">
                         <motion.div
                             initial={{ opacity: 0, x: 30, scale: 0.9 }}
                             animate={controls}

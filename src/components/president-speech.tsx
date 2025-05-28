@@ -17,9 +17,9 @@ export default function PresidentSpeech() {
     }, [isInView, controls])
 
     return (
-        <div className="bg-[#F5F5F5] p-0 md:p-16  ">
+        <div className="bg-[#F5F5F5] p-2 md:p-16  ">
             <section ref={ref} className="bg-[#2F3C2B] py-16 lg:py-24 rounded-[16px]">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="container mx-auto px-4 sm:px-16 lg:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
