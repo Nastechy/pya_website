@@ -1,4 +1,5 @@
 
+import About from "@/components/aboutus";
 import Hero from "@/components/hero";
 import Mission from "@/components/mission-section";
 import { Navbar } from "@/components/navbar";
@@ -15,6 +16,7 @@ export default function Home() {
         <StatsSection/>
         <PresidentSpeech/>
         <Mission/>
+        <About/>
       </div>
     </div>
   );
