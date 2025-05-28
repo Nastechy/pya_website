@@ -65,6 +65,7 @@ export default function StatsSection() {
                         variants={{
                             visible: { opacity: 1, x: 0, transition: { duration: 0.8 } },
                         }}
+                        className="md:text-start text-center"
                     >
                         <motion.p
                             initial={{ opacity: 0 }}
