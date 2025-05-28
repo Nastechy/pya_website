@@ -17,7 +17,7 @@ export default function About() {
 
     return (
         <div className="bg-[#F5F5F5] p-4 md:p-16  ">
-            <section ref={ref} className="bg-white py-6 md:py-16 lg:py-24 rounded-[16px]">
+            <section id="about" ref={ref} className="bg-white py-6 md:py-16 lg:py-24 rounded-[16px]">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                         <motion.div

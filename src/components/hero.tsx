@@ -40,7 +40,7 @@ export default function HeroSlider() {
     }, [])
 
     return (
-        <section className="relative h-screen w-full overflow-hidden bg-[#2F3C2B]">
+        <section id="home" className="relative h-screen w-full overflow-hidden bg-[#2F3C2B]">
             <AnimatePresence mode="wait">
                 <motion.div
                     key={currentSlide}
@@ -125,7 +125,6 @@ export default function HeroSlider() {
                 <span className="text-2xl font-light">{String(heroSlides.length).padStart(2, "0")}</span>
             </motion.div>
 
-            {/* Manual Navigation Dots */}
             <div className="absolute bottom-20 left-1/2 z-20 flex -translate-x-1/2 space-x-3">
                 {heroSlides.map((_, index) => (
                     <button
