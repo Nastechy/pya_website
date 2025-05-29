@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion"
 import { Facebook, Twitter, Instagram, Youtube, ArrowUp } from "lucide-react"
+import Image from "next/image"
+
 
 export default function Footer() {
     const socialLinks = [
@@ -27,11 +29,11 @@ export default function Footer() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        // className="flex items-center space-x-3"
+                    // className="flex items-center space-x-3"
                     >
                         <div className="flex items-center md:space-x-4 space-x-2">
                             <a className="flex items-center space-x-2">
-                                <img src="/pyalogo.png" alt="PYA Logo" width={50} height={40} />
+                                <Image src="/pyalogo.png" alt="PYA Logo" width={50} height={40} />
                             </a>
                             <div className="font-bold md:text-[26px] text-[18px] text-[#2F3C2B]">Pan Youth Association</div>
                         </div>
@@ -45,7 +47,7 @@ export default function Footer() {
                         transition={{ duration: 0.6, delay: 0.2 }}
                         className="flex items-center space-x-3"
                     >
-                        {socialLinks.map((social, index) => (
+                        {socialLinks.map((social) => (
                             <motion.a
                                 key={social.label}
                                 href={social.href}
@@ -87,7 +89,7 @@ export default function Footer() {
                 <div className="md:hidden mt-6 pt-6 border-t border-gray-300">
                     <div className="flex flex-col items-center space-y-4">
                         <div className="flex items-center space-x-3">
-                            {socialLinks.map((social, index) => (
+                            {socialLinks.map((social) => (
                                 <motion.a
                                     key={social.label}
                                     href={social.href}

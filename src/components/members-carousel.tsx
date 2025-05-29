@@ -249,7 +249,7 @@
 import type React from "react"
 
 import { useState, useEffect, useRef } from "react"
-import { motion, AnimatePresence, useMotionValue, useTransform, useSpring } from "framer-motion"
+import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import Image from "next/image"
 
@@ -323,8 +323,8 @@ export default function MembersCarousel() {
     const containerRef = useRef<HTMLDivElement>(null)
 
     // Smooth spring animation for the carousel
-    const x = useMotionValue(0)
-    const springX = useSpring(x, { stiffness: 300, damping: 30 })
+    // const x = useMotionValue(0)
+    // const springX = useSpring(x, { stiffness: 300, damping: 30 })
 
     const nextSlide = () => {
         setDirection(1)
