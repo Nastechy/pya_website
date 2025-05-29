@@ -1,10 +1,13 @@
 
 import About from "@/components/aboutus";
+import Footer from "@/components/footer";
 import Hero from "@/components/hero";
+import MembersCarousel from "@/components/members-carousel";
 import Mission from "@/components/mission-section";
 import { Navbar } from "@/components/navbar";
 import PresidentSpeech from "@/components/president-speech";
 import StatsSection from "@/components/stats-section";
+import SupportSection from "@/components/support-section";
 
 
 export default function Home() {
@@ -13,10 +16,13 @@ export default function Home() {
       <div className="">
         <Navbar />
         <Hero />
-        <StatsSection/>
-        <PresidentSpeech/>
-        <Mission/>
-        <About/>
+        <StatsSection />
+        <PresidentSpeech />
+        <Mission />
+        <SupportSection />
+        <About />
+        <MembersCarousel />
+        <Footer/>
       </div>
     </div>
   );
