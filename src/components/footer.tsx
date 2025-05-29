@@ -61,29 +61,6 @@ export default function Footer() {
                             </motion.a>
                         ))}
                     </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.4 }}
-                        className="flex items-center space-x-4"
-                    >
-                        <p className="text-gray-600 text-sm">
-                            © 2024 Powered by: <span className="font-semibold">Pan Youth Association</span>
-                        </p>
-
-                        <motion.button
-                            onClick={scrollToTop}
-                            whileHover={{ scale: 1.1, y: -2 }}
-                            whileTap={{ scale: 0.95 }}
-                            transition={{ duration: 0.2 }}
-                            className="w-10 h-10 bg-green-800 hover:bg-green-900 text-white rounded-lg flex items-center justify-center transition-colors duration-300 shadow-lg hover:shadow-xl"
-                            aria-label="Back to top"
-                        >
-                            <ArrowUp size={18} />
-                        </motion.button>
-                    </motion.div>
                 </div>
 
                 <div className="md:hidden mt-6 pt-6 border-t border-gray-300">
