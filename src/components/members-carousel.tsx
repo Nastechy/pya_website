@@ -337,7 +337,7 @@ export default function MembersCarousel() {
     }
 
     const getVisibleMembers = () => {
-        const visibleCount = 4
+        const visibleCount = 3
         const result = []
 
         for (let i = -1; i < visibleCount - 1; i++) {
