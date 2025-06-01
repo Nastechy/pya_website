@@ -15,29 +15,65 @@ export default function Mission() {
         }
     }, [isInView, controls])
 
+    const imageVariants = {
+        hidden: { opacity: 0, rotate: -10, scale: 0.85, y: 20 },
+        visible: {
+            opacity: 1,
+            rotate: 0,
+            scale: 1,
+            y: [20, -10, 0],
+            transition: {
+                duration: 1.2,
+                ease: "easeInOut",
+            },
+        },
+    }
+
+    const containerVariants = {
+        hidden: {},
+        visible: {
+            transition: {
+                staggerChildren: 0.3,
+                delayChildren: 0.4,
+            },
+        },
+    }
+
+    const titleVariants = {
+        hidden: { opacity: 0, y: 30, scale: 0.95 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            transition: { duration: 0.6, ease: "easeOut" },
+        },
+    }
+
+    const paragraphVariants = {
+        hidden: { opacity: 0, y: 40, scale: 0.95 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            transition: { duration: 0.7, ease: "easeOut" },
+        },
+    }
+
     return (
-        <section id="information"  className="bg-[#F5F5F5] p-2 md:p-16  ">
+        <section id="information" className="bg-[#F5F5F5] p-2 md:p-16">
             <div ref={ref} className="bg-white py-10 md:py-16 lg:py-24 rounded-[16px]">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 grid-flow-row  gap-12 lg:gap-16 items-center">
+                <div className="container mx-auto px-2 sm:px-6 lg:px-8">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                        {/* Image first on lg+, second on smaller */}
                         <motion.div
-                            initial={{ opacity: 0, x: 30, scale: 0.9 }}
+                            className="relative order-2 lg:order-1"
+                            initial="hidden"
                             animate={controls}
-                            variants={{
-                                visible: {
-                                    opacity: 1,
-                                    x: 0,
-                                    scale: 1,
-                                    transition: { delay: 0.5, duration: 0.8, ease: "easeOut" },
-                                },
-                            }}
-                            className="relative"
+                            variants={imageVariants}
+                            whileHover={{ scale: 1.03 }}
+                            transition={{ type: "spring", stiffness: 150 }}
                         >
-                            <motion.div
-                                whileHover={{ scale: 1.02 }}
-                                transition={{ duration: 0.3 }}
-                                className="relative overflow-hidden rounded-2xl shadow-2xl"
-                            >
+                            <div className="relative overflow-hidden rounded-2xl shadow-2xl cursor-pointer">
                                 <Image
                                     src="/image.jpg"
                                     alt=" Pan Youth Association members"
@@ -46,36 +82,26 @@ export default function Mission() {
                                     className="w-full h-[400px] object-cover"
                                     priority
                                 />
-
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
-                            </motion.div>
+                            </div>
                         </motion.div>
+
                         <motion.div
-                            initial={{ opacity: 0, x: -30 }}
+                            className="space-y-6 order-1 lg:order-2"
+                            initial="hidden"
                             animate={controls}
-                            variants={{
-                                visible: { opacity: 1, x: 0, transition: { duration: 0.8 } },
-                            }}
-                            className="space-y-6"
+                            variants={containerVariants}
                         >
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={controls}
-                                variants={{
-                                    visible: { opacity: 1, scale: 1, transition: { delay: 0.2, duration: 0.6 } },
-                                }}
+                            <motion.h2
                                 className="text-[26px] font-bold text-[#394636]"
+                                variants={titleVariants}
                             >
                                 Mission & Vision
-                            </motion.div>
+                            </motion.h2>
 
                             <motion.p
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={controls}
-                                variants={{
-                                    visible: { opacity: 1, y: 0, transition: { delay: 0.6, duration: 0.8 } },
-                                }}
                                 className="text-gray-600 text-base lg:text-lg leading-relaxed"
+                                variants={paragraphVariants}
                             >
                                 Our mission is to inspire and nurture leadership, collaboration,
                                 and innovation among the youth from Pan Land, empowering them to
@@ -85,9 +111,7 @@ export default function Mission() {
                                 fostering a deep sense of responsibility toward their community and heritage.
                                 while fostering a deep sense of responsibility toward their community and heritage.
                             </motion.p>
-
                         </motion.div>
-
                     </div>
                 </div>
             </div>

@@ -1,12 +1,7 @@
 
-
-
-
-
-
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 
@@ -30,23 +25,57 @@ const heroSlides = [
 
 export default function HeroSlider() {
     const [currentSlide, setCurrentSlide] = useState(0)
+    const [isAnimating, setIsAnimating] = useState(false)
+    const timeoutRef = useRef<NodeJS.Timeout | null>(null)
 
     useEffect(() => {
-        const timer = setInterval(() => {
-            setCurrentSlide((prev) => (prev + 1) % heroSlides.length)
+        if (isAnimating) return
+
+        timeoutRef.current = setTimeout(() => {
+            goToSlide((currentSlide + 1) % heroSlides.length)
         }, 8000)
 
-        return () => clearInterval(timer)
-    }, [])
+        return () => {
+            if (timeoutRef.current) {
+                clearTimeout(timeoutRef.current)
+            }
+        }
+    }, [currentSlide, isAnimating])
+
+    const goToSlide = (index: number) => {
+        if (isAnimating || index === currentSlide) return
+
+        setIsAnimating(true)
+        setCurrentSlide(index)
+
+        // Allow animation to finish before enabling buttons
+        setTimeout(() => setIsAnimating(false), 1500) // match motion transition duration
+    }
+
+    // Optional: keyboard navigation support
+    const handleKeyDown = (e: React.KeyboardEvent) => {
+        if (isAnimating) return
+
+        if (e.key === "ArrowRight") {
+            goToSlide((currentSlide + 1) % heroSlides.length)
+        } else if (e.key === "ArrowLeft") {
+            goToSlide((currentSlide - 1 + heroSlides.length) % heroSlides.length)
+        }
+    }
 
     return (
-        <section id="home" className="relative h-screen w-full overflow-hidden bg-[#2F3C2B]">
+        <section
+            id="home"
+            tabIndex={0}
+            onKeyDown={handleKeyDown}
+            className="relative h-screen w-full overflow-hidden bg-[#2F3C2B] outline-none"
+        >
             <AnimatePresence mode="wait">
                 <motion.div
-                    key={currentSlide}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
+                    key={heroSlides[currentSlide].id}
+                    initial={{ opacity: 0, x: 50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -50 }}
                     transition={{ duration: 1.5, ease: "easeInOut" }}
                     className="absolute inset-0"
                 >
@@ -74,7 +103,7 @@ export default function HeroSlider() {
                         </motion.div>
 
                         <motion.h1
-                            key={currentSlide}
+                            key={heroSlides[currentSlide].id}
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.7, duration: 0.8 }}
@@ -91,13 +120,17 @@ export default function HeroSlider() {
                         >
                             <Button
                                 size="lg"
-                                className="bg-white text-[#2F3C2B] rounded-full hover:bg-gray-100 px-3 py-3 text-[10px] font-semibold uppercase tracking-wider"
+                                disabled={isAnimating}
+                                className="bg-white text-[#2F3C2B] rounded-full hover:bg-gray-100 px-3 py-3 text-[10px] font-semibold uppercase tracking-wider disabled:opacity-50 disabled:cursor-not-allowed"
+                                onClick={() => alert("Become a member clicked")}
                             >
                                 BECOME A MEMBER
                             </Button>
                             <Button
                                 size="lg"
-                                className=" bg-[#2F3C2B] rounded-full hover:bg-white hover:text-black px-3 py-3 text-[10px] font-semibold uppercase tracking-wider"
+                                disabled={isAnimating}
+                                className="bg-[#2F3C2B] rounded-full hover:bg-white hover:text-black px-3 py-3 text-[10px] font-semibold uppercase tracking-wider disabled:opacity-50 disabled:cursor-not-allowed"
+                                onClick={() => alert("Our project clicked")}
                             >
                                 OUR PROJECT
                             </Button>
@@ -115,10 +148,14 @@ export default function HeroSlider() {
                 <span className="text-2xl font-bold">{String(currentSlide + 1).padStart(2, "0")}</span>
                 <div className="flex items-center space-x-2">
                     {heroSlides.map((_, index) => (
-                        <div
+                        <button
                             key={index}
+                            onClick={() => goToSlide(index)}
+                            disabled={isAnimating}
                             className={`h-0.5 transition-all duration-300 ${index === currentSlide ? "w-8 bg-white" : "w-4 bg-white/50"
                                 }`}
+                            aria-label={`Go to slide ${index + 1}`}
+                            tabIndex={0}
                         />
                     ))}
                 </div>
@@ -129,13 +166,16 @@ export default function HeroSlider() {
                 {heroSlides.map((_, index) => (
                     <button
                         key={index}
-                        onClick={() => setCurrentSlide(index)}
+                        onClick={() => goToSlide(index)}
+                        disabled={isAnimating}
                         className={`h-3 w-3 rounded-full transition-all duration-300 ${index === currentSlide ? "bg-white" : "bg-white/50 hover:bg-white/75"
                             }`}
                         aria-label={`Go to slide ${index + 1}`}
+                        tabIndex={0}
                     />
                 ))}
             </div>
         </section>
     )
 }
+
