@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useState, useEffect, useRef } from "react"
@@ -55,7 +54,7 @@ export default function MembersCarousel() {
 
         for (let i = -1; i < visibleCount - 1; i++) {
             const index = (currentIndex + i + members.length) % members.length
-            result.push({ ...members[index], displayIndex: i + 1 }) 
+            result.push({ ...members[index], displayIndex: i + 1 })
         }
 
         return result
@@ -114,7 +113,15 @@ export default function MembersCarousel() {
                     </motion.p>
                 </motion.div>
 
-                <div className="absolute left-4 top-1/2 -translate-y-1/2 z-20 flex flex-col space-y-3 md:space-y-6">
+                <div
+                    className={`
+                        z-20 flex
+                        ${isDesktop
+                            ? "absolute left-4 top-1/2 -translate-y-1/2 flex-col space-y-6"
+                            : "relative mt-8 justify-center flex-row space-x-6"
+                        }
+                    `}
+                >
                     <motion.button
                         whileHover={{ scale: 1.15, rotate: -5 }}
                         whileTap={{ scale: 0.9 }}
@@ -202,8 +209,8 @@ export default function MembersCarousel() {
                         >
                             <div
                                 className={`w-3 h-3 rounded-full transition-all duration-500 ${index === currentIndex
-                                        ? "bg-gradient-to-r from-green-600 to-green-800 shadow-lg"
-                                        : "bg-gray-300 hover:bg-gray-400"
+                                    ? "bg-gradient-to-r from-green-600 to-green-800 shadow-lg"
+                                    : "bg-gray-300 hover:bg-gray-400"
                                     }`}
                             />
                             {index === currentIndex && (
