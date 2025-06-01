@@ -97,7 +97,7 @@ export default function MembersCarousel() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, delay: 0.3 }}
-                        className="text-[18px] md:text-[30px] font-bold mb-4 text-[#2F3C2B]"
+                        className="text-[26px] md:text-[32px] font-bold mb-4 text-[#2F3C2B]"
                     >
                         PYA Members
                     </motion.h2>
@@ -159,7 +159,6 @@ export default function MembersCarousel() {
                     </motion.div>
                 </div>
 
-                {/* Slide progress and dots */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -181,7 +180,7 @@ export default function MembersCarousel() {
                         >
                             <div
                                 className={`w-3 h-3 rounded-full transition-all duration-500 ${index === currentIndex
-                                    ? "bg-gradient-to-r from-green-600 to-green-800 shadow-lg"
+                                    ? "bg-gradient-to-r from-[#2F3C2B] to-green-800 shadow-lg"
                                     : "bg-gray-300 hover:bg-gray-400"
                                     }`}
                             />
@@ -197,7 +196,6 @@ export default function MembersCarousel() {
                     ))}
                 </motion.div>
 
-                {/* Buttons container */}
                 <div
                     className={`
             z-20 flex

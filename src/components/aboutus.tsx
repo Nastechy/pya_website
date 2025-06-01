@@ -20,7 +20,7 @@ export default function About() {
         hidden: { opacity: 0, y: 40 },
         visible: {
             opacity: 1,
-            y: [40, -10, 0], // bounce effect
+            y: [40, -10, 0], 
             transition: { duration: 1, ease: "easeInOut" },
         },
     }
