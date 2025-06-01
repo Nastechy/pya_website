@@ -181,8 +181,8 @@ export default function MembersCarousel() {
                         >
                             <div
                                 className={`w-3 h-3 rounded-full transition-all duration-500 ${index === currentIndex
-                                        ? "bg-gradient-to-r from-green-600 to-green-800 shadow-lg"
-                                        : "bg-gray-300 hover:bg-gray-400"
+                                    ? "bg-gradient-to-r from-green-600 to-green-800 shadow-lg"
+                                    : "bg-gray-300 hover:bg-gray-400"
                                     }`}
                             />
                             {index === currentIndex && (
@@ -326,7 +326,7 @@ function EnhancedMemberCard({ member, isCenter, enableTilt }: MemberCardProps) {
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.6, delay: 0.5 }}
-                            className="text-green-700 font-semibold text-sm"
+                            className="text-[#2F3C2B] font-semibold text-sm"
                         >
                             {member.position}
                         </motion.p>
