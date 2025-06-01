@@ -113,35 +113,6 @@ export default function MembersCarousel() {
                     </motion.p>
                 </motion.div>
 
-                <div
-                    className={`
-                        z-20 flex
-                        ${isDesktop
-                            ? "absolute left-4 top-1/2 -translate-y-1/2 flex-col space-y-6"
-                            : "relative mt-8 justify-center flex-row space-x-6"
-                        }
-                    `}
-                >
-                    <motion.button
-                        whileHover={{ scale: 1.15, rotate: -5 }}
-                        whileTap={{ scale: 0.9 }}
-                        onClick={slidePrev}
-                        aria-label="Previous member"
-                        className="w-12 h-12 bg-gradient-to-r from-green-700 to-green-800 hover:from-green-800 hover:to-green-900 text-white rounded-full flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-green-500"
-                    >
-                        <ChevronLeft size={24} />
-                    </motion.button>
-                    <motion.button
-                        whileHover={{ scale: 1.15, rotate: 5 }}
-                        whileTap={{ scale: 0.9 }}
-                        onClick={slideNext}
-                        aria-label="Next member"
-                        className="w-12 h-12 bg-gradient-to-r from-green-700 to-green-800 hover:from-green-800 hover:to-green-900 text-white rounded-full flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-green-500"
-                    >
-                        <ChevronRight size={24} />
-                    </motion.button>
-                </div>
-
                 <div className="px-8 sm:px-20 overflow-hidden">
                     <motion.div className="flex justify-center items-center space-x-6 md:space-x-8" layout>
                         <AnimatePresence mode="popLayout" custom={direction}>
@@ -188,6 +159,7 @@ export default function MembersCarousel() {
                     </motion.div>
                 </div>
 
+                {/* Slide progress and dots */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -209,8 +181,8 @@ export default function MembersCarousel() {
                         >
                             <div
                                 className={`w-3 h-3 rounded-full transition-all duration-500 ${index === currentIndex
-                                    ? "bg-gradient-to-r from-green-600 to-green-800 shadow-lg"
-                                    : "bg-gray-300 hover:bg-gray-400"
+                                        ? "bg-gradient-to-r from-green-600 to-green-800 shadow-lg"
+                                        : "bg-gray-300 hover:bg-gray-400"
                                     }`}
                             />
                             {index === currentIndex && (
@@ -224,6 +196,36 @@ export default function MembersCarousel() {
                         </motion.button>
                     ))}
                 </motion.div>
+
+                {/* Buttons container */}
+                <div
+                    className={`
+            z-20 flex
+            ${isDesktop
+                            ? "absolute left-4 top-1/2 -translate-y-1/2 flex-col space-y-6"
+                            : "relative mt-6 justify-center flex-row space-x-6"
+                        }
+          `}
+                >
+                    <motion.button
+                        whileHover={{ scale: 1.15, rotate: -5 }}
+                        whileTap={{ scale: 0.9 }}
+                        onClick={slidePrev}
+                        aria-label="Previous member"
+                        className="w-12 h-12 bg-gradient-to-r from-green-700 to-green-800 hover:from-green-800 hover:to-green-900 text-white rounded-full flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                    >
+                        <ChevronLeft size={24} />
+                    </motion.button>
+                    <motion.button
+                        whileHover={{ scale: 1.15, rotate: 5 }}
+                        whileTap={{ scale: 0.9 }}
+                        onClick={slideNext}
+                        aria-label="Next member"
+                        className="w-12 h-12 bg-gradient-to-r from-green-700 to-green-800 hover:from-green-800 hover:to-green-900 text-white rounded-full flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                    >
+                        <ChevronRight size={24} />
+                    </motion.button>
+                </div>
             </div>
         </section>
     )
