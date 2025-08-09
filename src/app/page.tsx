@@ -2,6 +2,7 @@
 import About from "@/components/aboutus";
 import Footer from "@/components/footer";
 import Hero from "@/components/hero";
+import LogoExplanation from "@/components/logoExplanation";
 import MembersCarousel from "@/components/members-carousel";
 import Mission from "@/components/mission-section";
 import { Navbar } from "@/components/navbar";
@@ -20,6 +21,7 @@ export default function Home() {
         <PresidentSpeech />
         <Mission />
         <SupportSection />
+        <LogoExplanation />
         <About />
         <MembersCarousel />
         <Footer/>

@@ -44,9 +44,14 @@ export function Navbar() {
         <nav className="flex items-center justify-between p-3 md:px-20 px-3 bg-[#2F3C2B] shadow sticky top-0 z-50">
             <div className="flex items-center md:space-x-4 space-x-2">
                 <a href="#home" onClick={() => handleLinkClick("home")} className="flex items-center space-x-2">
-                    <Image src="/pyalogo.png" alt="PYA Logo" width={50} height={40} />
-                </a>
-                <div className="font-bold md:text-[26px] text-[18px] text-white">Pan Youth Association</div>
+                    <Image
+                        src="/Newpanlogo.jpeg"
+                        alt="PYA Logo"
+                        width={80}
+                        height={40}
+                        className="w-[50px] md:w-[90px] h-auto"
+                    />                </a>
+                {/* <div className="font-bold md:text-[26px] text-[18px] text-white">Pan Youth Association</div> */}
             </div>
 
             <div className="hidden md:flex items-center space-x-16 font-[500] text-[14px]">
