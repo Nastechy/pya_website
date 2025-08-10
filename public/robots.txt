@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.pyaabuja.com
+
+# Sitemaps
+Sitemap: https://www.pyaabuja.com/sitemap.xml
