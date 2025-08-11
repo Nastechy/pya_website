@@ -85,7 +85,7 @@ export default function HeroSlider() {
                             backgroundImage: `url(${heroSlides[currentSlide].image})`,
                         }}
                     />
-                    <div className="absolute inset-0 bg-black/50" />
+                    <div className="absolute inset-0 bg-black/30" />
                 </motion.div>
             </AnimatePresence>
 
@@ -139,7 +139,7 @@ export default function HeroSlider() {
                 </div>
             </div>
 
-            <motion.div
+            {/* <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.1, duration: 0.6 }}
@@ -160,7 +160,7 @@ export default function HeroSlider() {
                     ))}
                 </div>
                 <span className="text-2xl font-light">{String(heroSlides.length).padStart(2, "0")}</span>
-            </motion.div>
+            </motion.div> */}
 
             <div className="absolute bottom-20 left-1/2 z-20 flex -translate-x-1/2 space-x-3">
                 {heroSlides.map((_, index) => (
